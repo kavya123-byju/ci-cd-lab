@@ -1,5 +1,5 @@
 name: CI/CD Pipeline
-
+ 
 on:
   push:
     branches:
@@ -7,28 +7,28 @@ on:
   pull_request:
     branches:
       - master
-
+ 
 jobs:
   build:
     runs-on: ubuntu-latest
-
+ 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
+ 
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '16'
-
+ 
       - name: Install dependencies
         run: npm install
-
-      - name: Run placeholder Lint
-        run: echo "Skipping lint step for now"
-
-      - name: Run placeholder Test
-        run: echo "No tests yet"
-
+ 
+      - name: Run Lint
+        run: npm run lint
+ 
+      - name: Run Tests
+        run: npm test
+ 
       - name: Build Next.js Application
         run: npm run build
